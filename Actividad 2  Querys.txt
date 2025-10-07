@@ -1,0 +1,56 @@
+SELECT * FROM public.usuarios WHERE id_usuario=1;
+SELECT * FROM public.libro
+
+UPDATE public.usuarios
+set correo_usuario = 'maria.gonzalez123@email.com'
+
+where id_usuario = 1
+
+UPDATE public.usuarios
+set edad = '18'
+
+where id_usuario = 1;
+
+delete from public.usuarios WHERE lugar_proveniencia ='Coacalco';
+delete from public.usuarios WHERE id_usuario >=98;
+SELECT * FROM public.usuarios;
+
+SELECT nombre_usuario, edad FROM public.usuarios WHERE edad  b
+
+
+
+
+SELECT nombre_editorial, min(edad) FROM public.editorial
+GROUP BY pais_editorial;
+
+SELECT DISTINCT pais_editorial FROM public.editorial;
+
+SELECT COUNT(DISTINCT pais_categoria) FROM public.editorial;
+
+SELECT COUNT(DISTINCT pais_categoria) FROM public.categorias;
+
+SELECT * FROM public.usuarios WHERE nombre_usuario LIKE 'A%';
+
+SELECT * FROM public.usuarios WHERE nombre_usuario LIKE '%es';
+
+SELECT * FROM public.usuarios 
+	WHERE lugar_proveniencia in ('México','Oaxaca');
+
+
+SELECT * FROM public.editorial 
+	WHERE pais_editorial in ('México','España');
+
+
+SELECT * FROM public.editorial 
+	WHERE pais_editorial ='México' OR pais_editorial ='España';
+
+
+ALTER TABLE public.libro add column precio INT;
+UPDATE libro
+SET precio = FLOOR(RANDOM() * 500 + 100)  -- precios aleatorios entre 100 y 599
+WHERE id_libro IN (
+    SELECT id_libro
+    FROM libro
+    ORDER BY id_libro
+    LIMIT 98
+);
